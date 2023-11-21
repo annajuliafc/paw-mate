@@ -1,0 +1,16 @@
+.header {
+    height: 120px;
+    width: 100%;
+    padding: 32px 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+        width: 140px;
+    }
+
+    button {
+        color: white;
+    }
+}

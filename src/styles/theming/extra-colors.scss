@@ -1,0 +1,68 @@
+$custom-blue: #65D6CE;
+$custom-beige: #FFE9D6;
+
+$paw-mate-palette-blue: (
+    50 : #edfaf9,
+    100 : #d1f3f0,
+    200 : #b2ebe7,
+    300 : #93e2dd,
+    400 : #7cdcd5,
+    500 : $custom-blue,
+    600 : #5dd1c9,
+    700 : #53ccc2,
+    800 : #49c6bc,
+    900 : #37bcb0,
+    A100 : $white,
+    A200 : #d4fffb,
+    A400 : #a1fff6,
+    A700 : #87fff4,
+    contrast: (
+        50 : $black,
+        100 : $black,
+        200 : $black,
+        300 : $black,
+        400 : $black,
+        500 : $black,
+        600 : $black,
+        700 : $black,
+        800 : $black,
+        900 : $black,
+        A100 : $black,
+        A200 : $black,
+        A400 : $black,
+        A700 : $black,
+    )
+);
+
+$paw-mate-palette-beige: (
+    50 : #fffcfa,
+    100 : #fff8f3,
+    200 : #fff4eb,
+    300 : #fff0e2,
+    400 : #ffecdc,
+    500 : $custom-beige,
+    600 : #ffe6d1,
+    700 : #ffe3cc,
+    800 : #ffdfc6,
+    900 : #ffd9bc,
+    A100 : $white,
+    A200 : $white,
+    A400 : $white,
+    A700 : $white,
+    contrast: (
+        50 : $black,
+        100 : $black,
+        200 : $black,
+        300 : $black,
+        400 : $black,
+        500 : $black,
+        600 : $black,
+        700 : $black,
+        800 : $black,
+        900 : $black,
+        A100 : $black,
+        A200 : $black,
+        A400 : $black,
+        A700 : $black,
+    )
+);

@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+@include mat.core();
+@import './colors';
+
+$paw-mate-primary: mat.define-palette($paw-mate-palette-primary);
+$paw-mate-accent: mat.define-palette($paw-mate-palette-accent);
+$paw-mate-warn: mat.define-palette($paw-mate-palette-warn);
+
+$paw-mate-theme: mat.define-light-theme((color: (primary: $paw-mate-primary,
+                accent: $paw-mate-accent,
+                warn: $paw-mate-warn )));
+
+@include mat.all-component-themes($paw-mate-theme);
