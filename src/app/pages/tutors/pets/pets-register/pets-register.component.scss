@@ -1,0 +1,37 @@
+@import '../../../../../styles/theming/colors';
+
+form {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .form {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        width: 100%;
+
+        .field {
+            flex: 1;
+        }
+    }
+
+    .form-actions {
+        text-align: center;
+    }
+}
+
+.subtitleAddButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+        box-shadow: none;
+    }
+
+    .material-symbols-outlined {
+        color: $white;
+    }
+}

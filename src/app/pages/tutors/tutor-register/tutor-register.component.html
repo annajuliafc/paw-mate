@@ -1,3 +1,73 @@
-<p>
-  tutor-register works!
-</p>
+<div class="container">
+  <h1>Dados do tutor</h1>
+  <form (ngSubmit)="tutorResgiterSubmit()" [formGroup]="tutorForm">
+    <div class="form">
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>Codígo de identificação</mat-label>
+        <input matInput type="text" formControlName="tutorId" readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>Nome</mat-label>
+        <input matInput id="name" formControlName="name">
+        <mat-error *ngIf="tutorForm.get('name')?.errors?.['required'] && tutorForm.get('name')?.touched">O nome do tutor
+          é
+          obrigatório.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>Apelido</mat-label>
+        <input matInput formControlName="surname">
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>CPF</mat-label>
+        <input matInput formControlName="document" cpfValidation (blur)="formatCpf()" minlength="11" maxlength="14">
+        <mat-error *ngIf="tutorForm.get('document')?.errors?.['required'] && tutorForm.get('document')?.touched">O CPF
+          do tutor é
+          obrigatório.
+        </mat-error>
+        <mat-error *ngIf="tutorForm.get('document')?.errors?.['cpfValidation']">
+          CPF inválido.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthday">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="tutorForm.get('birthday')?.errors?.['required'] && tutorForm.get('birthday')?.touched">A data
+          de nascimento é obrigatória.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>Cidade</mat-label>
+        <input matInput formControlName="city">
+        <mat-error *ngIf="tutorForm.get('city')?.errors?.['required'] && tutorForm.get('city')?.touched">A cidade é
+          obrigatória.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>Estados</mat-label>
+        <mat-select formControlName="state">
+          <mat-option></mat-option>
+          <mat-option [value]="state.acronym" *ngFor="let state of states">{{ state.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="tutorForm.get('state')?.errors?.['required'] && tutorForm.get('state')?.touched">O estado é
+          obrigatório.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <app-pets-register></app-pets-register>
+
+    <div class="form-actions">
+      <button mat-flat-button type="submit" color="primary" >Confirmar</button>
+    </div>
+  </form>
+</div>

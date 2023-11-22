@@ -1,5 +1,6 @@
 @import './styles/theming/theme';
-@import './styles/theming/extra-colors.scss';
+@import './styles/theming/colors';
+@import './styles/snackbar';
 
 * {
   margin: 0;
@@ -16,4 +17,13 @@ body {
 
 button {
   font-size: 16px;
+  padding: 10px 24px;
+  height: auto;
+}
+
+.container {
+  padding: 0 120px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

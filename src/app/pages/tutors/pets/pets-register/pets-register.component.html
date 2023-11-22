@@ -1,0 +1,112 @@
+<div class="subtitleAddButton">
+  <h2>Dados do(s) Pet(s)</h2>
+  <button mat-mini-fab color="primary">
+    <span class="material-symbols-outlined">
+      add
+    </span>
+  </button>
+</div>
+
+<form (ngSubmit)="petResgiterSubmit()" [formGroup]="petForm">
+  <div class="form">
+    <mat-form-field appearance="outline" class="field" color="accent">
+      <mat-label>Codígo de identificação</mat-label>
+      <input matInput type="text" formControlName="petId" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field" color="accent">
+      <mat-label>Nome</mat-label>
+      <input matInput id="name" formControlName="name">
+      <mat-error *ngIf="petForm.get('name')?.errors?.['required'] && petForm.get('name')?.touched">O nome do pet
+        é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field" color="accent">
+      <mat-label>Data de nascimento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthday">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="petForm.get('birthday')?.errors?.['required'] && petForm.get('birthday')?.touched">A data
+        de nascimento do pet é obrigatória.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form">
+    <mat-form-field appearance="outline" class="field" color="accent">
+      <mat-label>Raça</mat-label>
+      <input matInput id="breed" formControlName="breed">
+      <mat-error *ngIf="petForm.get('breed')?.errors?.['required'] && petForm.get('breed')?.touched">A raça do pet
+        é obrigatória.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field" color="accent">
+      <mat-label>Cor</mat-label>
+      <input matInput id="color" formControlName="color">
+      <mat-error *ngIf="petForm.get('color')?.errors?.['required'] && petForm.get('color')?.touched">A cor do pet
+        é obrigatória.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field" color="accent">
+      <mat-label>Peso</mat-label>
+      <input matInput id="weight" formControlName="weight">
+      <mat-error *ngIf="petForm.get('weight')?.errors?.['required'] && petForm.get('weight')?.touched">O peso do pet
+        é obrigatório.
+      </mat-error>
+    </mat-form-field>
+  </div>
+</form>
+
+<div class="subtitleAddButton">
+  <h3>Vacinas do Pet</h3>
+  <button mat-button type="button" (click)="addRow()" color="primary">Adicionar vacina</button>
+</div>
+
+<table mat-table [dataSource]="vaccines" class="table">
+  <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+    <th mat-header-cell *matHeaderCellDef [ngSwitch]="col.key" class="table-header">
+      <span *ngSwitchDefault>{{ col.label }}</span>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+        <div class="btn-edit" *ngSwitchCase="'isEdit'">
+          <button mat-button (click)="element.isEdit = !element.isEdit">
+            Edit
+          </button>
+          <button mat-button class="button-remove" (click)="removeRow(element.id)">
+            Delete
+          </button>
+        </div>
+        <span *ngSwitchCase="'date'">
+          {{ element[col.key] | date: 'mediumDate' }}
+        </span>
+        <span *ngSwitchDefault>
+          {{ element[col.key] }}
+        </span>
+      </div>
+      <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+        <div *ngSwitchCase="'isSelected'"></div>
+        <div class="btn-edit" *ngSwitchCase="'isEdit'">
+          <button mat-button (click)="editRow(element)" [disabled]="disableSubmit(element.id)">
+            Done
+          </button>
+        </div>
+        <mat-form-field class="form-input" *ngSwitchCase="'date'" appearance="outline">
+          <mat-label>Data de vacinação</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="element[col.key]" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="form-input" *ngSwitchDefault appearance="outline">
+          <mat-label>{{ element[col.label] }}</mat-label>
+          <input matInput [required]="col.required" [pattern]="col.pattern" [type]="col.type"
+            [(ngModel)]="element[col.key]" (change)="inputHandler($event, element.id, col.key)" />
+        </mat-form-field>
+      </div>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+}
+
+form {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .form {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        width: 100%;
+
+        .field {
+            flex: 1;
+        }
+    }
+
+    .form-actions {
+        text-align: center;
+
+        button {
+            color: white;
+        }
+    }
+}
