@@ -1,0 +1,22 @@
+.vaccinesTitleAdd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    button {
+        box-shadow: none;
+    }
+}
+
+.vaccines {
+    margin: 16px 0;
+
+    .vaccines-table {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+
+        .paginator {
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    }
+}

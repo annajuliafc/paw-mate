@@ -1,6 +1,8 @@
+$warn-background: map-get($paw-mate-palette-warn, 50);
+
 .success-snackbar.mat-mdc-snack-bar-container {
     .mdc-snackbar__surface {
-        background: rgba($custom-success, 0.1);
+        background: $custom-success-background;
         border-left: 3px solid $custom-success;
 
         .mat-mdc-button {
@@ -17,7 +19,7 @@
 
 .warning-snackbar.mat-mdc-snack-bar-container {
     .mdc-snackbar__surface {
-        background: rgba($custom-warning, 0.1);
+        background: $custom-warning-background;
         border-left: 3px solid $custom-warning;
 
         .mat-mdc-button {
@@ -34,7 +36,7 @@
 
 .error-snackbar.mat-mdc-snack-bar-container {
     .mdc-snackbar__surface {
-        background: rgba($custom-warn, 0.1);
+        background: $warn-background;
         border-left: 3px solid $custom-warn;
 
         .mat-mdc-button {

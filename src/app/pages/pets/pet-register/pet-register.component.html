@@ -1,0 +1,56 @@
+<div class="container">
+  <h1>Cadastrar novo pet</h1>
+
+  <mat-form-field appearance="outline" class="id-tutor-field" color="accent">
+    <mat-label>ID do tutor</mat-label>
+    <input matInput [ngModel]="tutorId" readonly>
+  </mat-form-field>
+
+  <form (ngSubmit)="petResgiterSubmit()" [formGroup]="petForm" class="pet-form">
+    <div class="form">
+      <mat-form-field appearance="outline" class="field" color="accent" [class.duplicate-name-error]="duplicateName">
+        <mat-label>Nome do pet</mat-label>
+        <input matInput id="name" formControlName="name" (blur)="checkDuplicateName()">
+        <mat-error *ngIf="petForm.get('name')?.errors?.['required'] && petForm.get('name')?.touched">O nome do pet
+          é
+          obrigatório.
+        </mat-error>
+        <mat-hint *ngIf="checkName" class="spinner-hint"><mat-spinner diameter="16"></mat-spinner> Verificando
+          duplicidade...</mat-hint>
+        <mat-hint *ngIf="duplicateName" class="duplicate-name-error">Pet ja cadastrado</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthDate">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>Raça</mat-label>
+        <input matInput id="breed" formControlName="breed">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>Cor</mat-label>
+        <input matInput id="color" formControlName="color">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="field" color="accent">
+        <mat-label>Peso</mat-label>
+        <input matInput id="weight" formControlName="weight" type="number">
+        <span matTextSuffix>kg</span>
+      </mat-form-field>
+    </div>
+
+    <app-vaccines (vaccineSubmit)="vaccinesAdd($event)"></app-vaccines>
+
+    <div class="form-actions">
+      <button mat-button type="button" (click)="registerAnotherPet()" color="primary">Cadastrar outro pet</button>
+      <button mat-flat-button type="submit" color="primary">Salvar</button>
+    </div>
+  </form>
+</div>

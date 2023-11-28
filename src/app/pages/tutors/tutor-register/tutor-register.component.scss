@@ -1,29 +1,41 @@
+@import '../../../../styles/theming/colors';
+
 h1 {
     text-align: center;
+    margin-bottom: 24px;
 }
 
-form {
-    margin-top: 24px;
+.tutor-form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 16px;
+    width: 70%;
 
-    .form {
+    .spinner-hint {
         display: flex;
-        justify-content: center;
-        gap: 16px;
-        width: 100%;
-
-        .field {
-            flex: 1;
-        }
+        gap: 8px;
+        align-items: center;
+        color: gray;
     }
 
     .form-actions {
         text-align: center;
-
-        button {
-            color: white;
-        }
     }
+
+    .duplicate-name-error {
+        color: #cc0000;
+    }
+}
+
+::ng-deep .duplicate-name-error .mdc-notched-outline__leading {
+    border-color: $custom-warn !important;
+}
+
+::ng-deep .duplicate-name-error .mdc-notched-outline__notch {
+    border-color: $custom-warn !important;
+}
+
+::ng-deep .duplicate-name-error .mdc-notched-outline__trailing {
+    border-color: $custom-warn !important;
 }

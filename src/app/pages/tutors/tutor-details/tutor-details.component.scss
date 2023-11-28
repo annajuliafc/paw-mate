@@ -1,0 +1,32 @@
+@import '../../../../styles/theming/colors';
+
+.tutor-details {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+    margin-top: 24px;
+
+    .tutor-card {
+        border: 2px solid $custom-primary;
+        border-radius: 16px;
+        flex: 1;
+
+        mat-card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    .pets-table {
+        flex: 3;
+        border: 2px solid $custom-primary;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+}

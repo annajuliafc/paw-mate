@@ -1,0 +1,15 @@
+@import '../../../../../styles/theming/colors';
+
+.pet-name {
+    font-size: 18px;
+}
+
+.painel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .vaccines {
+        margin: 8px 0 8px 16px;
+    }
+}

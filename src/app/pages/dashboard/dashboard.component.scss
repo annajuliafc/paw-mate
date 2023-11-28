@@ -1,0 +1,47 @@
+@import '../../../styles/theming/colors';
+
+$primary-background: map-get($paw-mate-palette-primary, 50);
+
+::ng-deep .mdc-text-field--filled {
+    background-color: transparent!important;
+}
+
+.dashboard {
+    padding: 0 120px;
+
+    .tab-content {
+        margin: 16px;
+
+        .filter {
+            width: 100%;
+        }
+
+        .table {
+            border: 1px solid $custom-primary;
+            overflow: hidden;
+            border-radius: 16px;
+
+            table {
+                th {
+                    background-color: $custom-primary!important;
+                    font-size: 16px;
+                    color: white;
+                }
+
+                th:last-of-type,
+                td:last-of-type {
+                    text-align: center;
+                }
+            }
+
+            button {
+                color: white;
+                box-shadow: none;
+            }
+
+            mat-pagintaor {
+                background: $custom-primary;
+            }
+        }
+    }
+}

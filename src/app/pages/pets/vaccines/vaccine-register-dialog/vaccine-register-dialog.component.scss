@@ -1,0 +1,25 @@
+.dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h3 {
+        font-size: 24px;
+        opacity: 0.7;
+        text-align: center;
+        padding: 16px;
+    }
+
+    .content {
+        display: flex;
+        gap: 16px;
+        padding: 20px 24px 8px;
+    }
+
+    .actions {
+        padding: 0 24px 20px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+    }
+}

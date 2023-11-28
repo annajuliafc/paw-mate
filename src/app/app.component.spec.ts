@@ -1,29 +1,34 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './core/header/header.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { PetRegisterComponent } from './pages/pets/pet-register/pet-register.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppComponent, HeaderComponent],
+      imports: [
+        RouterTestingModule.withRoutes([
+          { path: 'register', component: PetRegisterComponent },
+          { path: 'dashboard', component: DashboardComponent },
+        ]),
+      ],
+    });
+
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+  });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   it(`should have as title 'paw-mate'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('paw-mate');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('paw-mate app is running!');
+    expect(component.title).toEqual('paw-mate');
   });
 });

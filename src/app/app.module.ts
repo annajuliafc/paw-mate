@@ -8,20 +8,20 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './core/header/header.component';
+import { DialogComponent } from './core/dialog/dialog.component';
 
 // Modules
-import { MatButtonModule } from '@angular/material/button';
-import { CoreModule } from './core/core.module';
+import { MaterialModule } from './core/material/material.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HeaderComponent, DialogComponent],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
-    CoreModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    MatButtonModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent],

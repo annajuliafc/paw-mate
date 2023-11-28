@@ -1,0 +1,24 @@
+<div class="dialog">
+  <h3>Adicionar uma nova vacina</h3>
+  <div mat-dialog-content class="content">
+    <mat-form-field appearance="outline" class="field" color="accent">
+      <mat-label>Tipo</mat-label>
+      <mat-select [(ngModel)]="vaccine.type" required>
+        <mat-option></mat-option>
+        <mat-option [value]="vaccine" *ngFor="let vaccine of vaccinesList">{{ vaccine }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="field" color="accent">
+      <mat-label>Data de vacinação</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="vaccine.dateOfVacination" required>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions class="actions">
+    <button mat-button (click)="onNoClick()" color="primary">Cancelar</button>
+    <button mat-flat-button [mat-dialog-close]="vaccine" color="primary">Confirmar</button>
+  </div>
+</div>

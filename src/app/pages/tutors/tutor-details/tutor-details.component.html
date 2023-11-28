@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Detalhes do tutor e seus pets</h1>
+  <div class="tutor-details">
+    <mat-card class="tutor-card" *ngIf="tutor">
+      <mat-card-content>
+        <h2>{{ tutor.nickName }}</h2>
+        <h3>ID: {{ tutor.tutorId }}</h3>
+        <h4>Nome: {{ tutor.name }}</h4>
+        <h4>Data de nascimento: {{ tutor.birthDate | date: 'dd/MM/YYYY'}}</h4>
+        <p *ngIf="tutor.pets.length > 0; else petsNotFound">Esse tutor tem {{ tutor.pets.length }} pet(s) cadastrados
+        </p>
+        <ng-template #petsNotFound>
+          <p>Esse tutor não tem nenhum pet cadastrado</p>
+        </ng-template>
+        <button mat-flat-button type="button" (click)="registerPet()" color="primary">Cadastrar pet</button>
+      </mat-card-content>
+    </mat-card>
+
+    <app-pets-table [pets]="tutor.pets" class="pets-table" *ngIf="tutor && tutor.pets.length > 0" [petId]="petId"></app-pets-table>
+  </div>
+</div>

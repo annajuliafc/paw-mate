@@ -1,0 +1,26 @@
+<mat-accordion multi *ngIf="pets">
+  <mat-expansion-panel *ngFor="let pet of pets" [expanded]="petId == pet.petId">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <strong class="pet-name"> {{ pet.name }} </strong>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="painel-content">
+      <p><strong>ID:</strong> {{ pet.petId }}</p>
+      <p><strong>Data de nascimento:</strong> {{ pet.birthDate | date: 'dd/MM/YYYY' }}</p>
+      <p><strong>Raça:</strong> {{ pet.breed }}</p>
+      <p><strong>Cor:</strong> {{ pet.color }}</p>
+      <p><strong>Peso:</strong> {{ pet.weight }}</p>
+      <div *ngIf="pet.vaccines.length > 0; else vaccinesNotFound">
+        <p><strong>Vacina(s):</strong></p>
+        <p *ngFor="let vaccine of pet.vaccines" class="vaccines">
+          Tipo: {{ vaccine.type }} <br />
+          Data da vacinação: {{ vaccine.dateOfVacination | date: 'dd/MM/YYYY'}}
+        </p>
+      </div>
+      <ng-template #vaccinesNotFound>
+        <p>Esse pet não tem vacinas cadastradas</p>
+      </ng-template>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

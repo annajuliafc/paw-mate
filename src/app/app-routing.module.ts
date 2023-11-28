@@ -20,6 +20,11 @@ const routes: Routes = [
       import('./pages/tutors/tutors.module').then((m) => m.TutorsModule),
   },
   {
+    path: 'pets',
+    loadChildren: () =>
+      import('./pages/pets/pets.module').then((m) => m.PetsModule),
+  },
+  {
     path: '**',
     loadChildren: () =>
       import('./pages/not-found/not-found.module').then(

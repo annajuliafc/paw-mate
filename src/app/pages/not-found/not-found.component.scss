@@ -1,0 +1,18 @@
+.not-found {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    margin-top: 24px;
+
+    img {
+        height: 300px;
+    }
+
+    .contents {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 16px;
+    }
+}

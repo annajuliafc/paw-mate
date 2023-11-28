@@ -1,5 +1,5 @@
 <header class="header">
-  <a routerLink="/"><img src="../../../assets/images/PawMate.svg" alt="PawMate Icon"></a>
-  <button mat-flat-button color="primary" routerLink="/tutors/register" routerLinkActive="register-link">Cadastrar
+  <a routerLink="/" routerLinkActive #dashboardActive="routerLinkActive"><img src="../../../assets/images/PawMate.svg" alt="PawMate Icon"></a>
+  <button mat-flat-button color="primary" routerLink="/tutors/register" *ngIf="isDashboardRoute()">Cadastrar
     tutor</button>
 </header>
